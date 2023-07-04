@@ -8,14 +8,12 @@ def manualRange(argument):
         while start < stop:
             result.append(start)
             start+=1
-        return result
     elif len(argument) == 2:
         start = argument[0]
         stop = argument[1]
         while start < stop:
             result.append(start)
             start+=1
-        return result
     elif len(argument) == 3:
         start = argument[0]
         stop = argument[1]
@@ -23,7 +21,7 @@ def manualRange(argument):
         while start < stop:
             result.append(start)
             start+=step
-        return result
+    return [round(x, 3) for x in result]
 
 argument = [ float(x) for x in input('Enter Input : ').split()]
 print('(', end='')
