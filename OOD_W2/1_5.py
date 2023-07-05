@@ -1,25 +1,37 @@
 print('*** TorKham HanSaa ***')
 
-orders = input('Enter Input : ').split(',')
-khamList = []
-for order in orders:
-    orderSplit = order.split()
-    if orderSplit[0] == 'P':
-        kham = orderSplit[1]
-        if len(khamList) == 0:
-            khamList.append(kham)
-            print(f'\'{kham}\' -> {khamList}')
-        elif kham[:2].lower() == khamList[-1][-2:].lower():
-            khamList.append(kham)
-            print(f'\'{kham}\' -> {khamList}')
+class ThorKham:
+    def __init__(self) -> None:
+        self.khamList = []
+
+    def playGame(self, orders):
+        for order in orders:
+            orderSplit = order.split()
+            if orderSplit[0] == 'P':
+                if not self.pState(orderSplit[1]):
+                    return     
+            elif orderSplit[0] == 'R':
+                self.rState()
+            elif orderSplit[0] == 'X':
+                return
+            else:
+                print(f'\'{order}\' is Invalid Input !!!')
+                return
+            
+    def pState(self, kham):
+        if len(self.khamList) == 0:
+            self.khamList.append(kham)
+            print(f'\'{kham}\' -> {self.khamList}')
+        elif kham[:2].lower() == self.khamList[-1][-2:].lower():
+            self.khamList.append(kham)
+            print(f'\'{kham}\' -> {self.khamList}')
         else:
             print(f'\'{kham}\' -> game over')
-            
-    elif orderSplit[0] == 'R':
+            return
+        
+    def rState(self):
         print('game restarted')
-        khamList = []
-    elif orderSplit[0] == 'X':
-        break
-    else:
-        print(f'\'{order}\' is Invalid Input !!!')
-        break
+        self.khamList = []
+
+orders = input('Enter Input : ').split(',')
+ThorKham().playGame(orders)
