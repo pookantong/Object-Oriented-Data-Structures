@@ -16,20 +16,20 @@ class MyInt :
             "IV" : 4,
             "I" : 1
         }
-        self.valTemp = num
     
     def __add__(self, val2):
         return MyInt(int((self.val + val2.val)*1.5))
     
     def toRoman(self):
+        valTemp = self.val
         romanNum = ''
-        while self.valTemp > 0:
+        while valTemp > 0:
             for key, val in self.romanNum.items():
-                if val <= self.valTemp:
+                if val <= valTemp:
                     romanNum = romanNum + key
-                    self.valTemp -= val
+                    valTemp -= val
                     break
-        return ''.join(romanNum)
+        return romanNum
                 
             
 print(' *** class MyInt ***')
