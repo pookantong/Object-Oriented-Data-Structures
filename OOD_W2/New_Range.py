@@ -1,29 +1,23 @@
 print('*** New Range ***')
 
-def manualRange(argument):
+def manualRange(arg1, arg2=None, arg3=1):
     result = []
-    if len(argument) == 1:
+    if arg2 == None:
         start = 0.0
-        stop = argument[0]
+        stop = arg1
         while start < stop:
             result.append(start)
             start+=1
-    elif len(argument) == 2:
-        start = argument[0]
-        stop = argument[1]
-        while start < stop:
-            result.append(start)
-            start+=1
-    elif len(argument) == 3:
-        start = argument[0]
-        stop = argument[1]
-        step = argument[2]
+    else:
+        start = arg1
+        stop = arg2
+        step = arg3
         while start < stop:
             result.append(start)
             start+=step
     return [round(x, 3) for x in result]
 
-argument = [ float(x) for x in input('Enter Input : ').split()]
+argument = [float(x) for x in input('Enter Input : ').split()]
 print('(', end='')
-print(*manualRange(argument), sep=', ', end='')
+print(*manualRange(*argument), sep=', ', end='')
 print(')')
