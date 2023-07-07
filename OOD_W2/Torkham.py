@@ -8,7 +8,7 @@ class ThorKham:
         for order in orders:
             orderSplit = order.split()
             if orderSplit[0] == 'P':
-                if not self.pState(orderSplit[1]):
+                if self.pState(orderSplit[1]):
                     return     
             elif orderSplit[0] == 'R':
                 self.rState()
@@ -22,14 +22,14 @@ class ThorKham:
         if len(self.khamList) == 0:
             self.khamList.append(kham)
             print(f'\'{kham}\' -> {self.khamList}')
-            return 1
+            return True
         elif kham[:2].lower() == self.khamList[-1][-2:].lower():
             self.khamList.append(kham)
             print(f'\'{kham}\' -> {self.khamList}')
-            return 1
+            return True
         else:
             print(f'\'{kham}\' -> game over')
-            return
+            return False
         
     def rState(self):
         print('game restarted')
