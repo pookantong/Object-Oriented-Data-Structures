@@ -22,9 +22,11 @@ class ThorKham:
         if len(self.khamList) == 0:
             self.khamList.append(kham)
             print(f'\'{kham}\' -> {self.khamList}')
+            return 1
         elif kham[:2].lower() == self.khamList[-1][-2:].lower():
             self.khamList.append(kham)
             print(f'\'{kham}\' -> {self.khamList}')
+            return 1
         else:
             print(f'\'{kham}\' -> game over')
             return
