@@ -8,7 +8,7 @@ class ThorKham:
         for order in orders:
             orderSplit = order.split()
             if orderSplit[0] == 'P':
-                if self.pState(orderSplit[1]):
+                if not self.pState(orderSplit[1]):
                     return     
             elif orderSplit[0] == 'R':
                 self.rState()

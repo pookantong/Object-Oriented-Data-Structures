@@ -2,8 +2,8 @@ print('*** New Range ***')
 
 def manualRange(arg1, arg2=None, arg3=1):
     result = []
-    if arg2 == None:
-        start = 0.0
+    if not arg2:
+        start = 0.0 
         stop = arg1
         while start < stop:
             result.append(start)
