@@ -61,7 +61,6 @@ def parkingLot(max, cars_input, state, target_car):
             print(cars) 
             
     
-    
 
 input = input('Enter max of car,car in soi,operation : ').split()
 parkingLot(*input)
