@@ -14,6 +14,9 @@ class Stack:
     def size(self):
         return len(self.items)
     
+    def peek(self):
+        return self.items[-1]
+    
     
 print(' *** Stack implement by Python list***')  
 ls = [e for e in input("Enter data to stack : ").split()]

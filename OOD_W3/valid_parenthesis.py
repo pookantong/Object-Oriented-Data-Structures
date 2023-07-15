@@ -14,6 +14,9 @@ class Stack:
     def size(self):
         return len(self.items)
     
+    def peek(self):
+        return self.items[-1]
+    
 class Parenthesis:
     def __init__(self):
         self.par = {

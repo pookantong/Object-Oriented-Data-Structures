@@ -16,8 +16,8 @@ class Stack:
     def size(self):
         return len(self.items)
     
-    def __repr__(self) -> str:
-        return f'{self.items}'
+    def peek(self):
+        return self.items[-1]
 
 def parkingLot(max, cars_input, state, target_car):
     max = int(max)

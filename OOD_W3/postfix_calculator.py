@@ -13,6 +13,10 @@ class Stack:
     
     def size(self):
         return len(self.items)
+    
+    def peek(self):
+        return self.items[-1]
+    
 def postFixeval(st):
     operators = ['+','-','*','/']
     s = Stack()

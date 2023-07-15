@@ -14,18 +14,18 @@ class Stack:
     def size(self):
         return len(self.items)
     
+    def peek(self):
+        return self.items[-1]
+    
 class IntoTheWoods:
     
     def __init__(self):
         self.stack = Stack()
 
     def aState(self, new_height):
-        new_stack = Stack()
-        for item in self.stack.items:
-            if item > new_height:
-                new_stack.push(item)
-        self.stack = new_stack
-        self.stack.push(new_height)
+        while not self.stack.isEmpty() and self.stack.peek() <= new_height:
+            self.stack.pop()
+        self.stack.push(new_height) 
         
     def bState(self):
         return len(self.stack.items)
