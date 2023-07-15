@@ -17,7 +17,7 @@ class Stack:
         return len(self.items)
     
     def peek(self):
-        return self.items[-1]
+        return self.items[-1] if not self.isEmpty() else None
 
 def parkingLot(max, cars_input, state, target_car):
     max = int(max)
