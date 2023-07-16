@@ -30,7 +30,7 @@ class Parenthesis:
         for par in pars:
             if par in self.par.values():
                 stack.push(par)
-            elif not stack.isEmpty() and self.par[par] == stack.items[-1]:
+            elif not stack.isEmpty() and self.par[par] == stack.peek():
                 stack.pop()
             else:
                 stack.push(par)
