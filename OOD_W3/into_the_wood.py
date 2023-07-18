@@ -30,17 +30,17 @@ class IntoTheWoods:
     def bState(self):
         return len(self.stack.items)
 
-    def start(self, inp):
-        for input in inp:
-            act = input.split()
-            act_state = act[0]
-            if act_state == 'A':
-                self.aState(int(act[1]))
-            else:
-                print(self.bState())
+    def start(self, inputs):
+        act = inputs.split()
+        act_state = act[0]
+        if act_state == 'A':
+            self.aState(int(act[1]))
+        else:
+            print(self.bState())
                 
 
 woods = IntoTheWoods()
-inp = input('Enter Input : ').split(',')
-woods.start(inp)
+inputs = input('Enter Input : ').split(',')
+for inp in inputs:
+    woods.start(inp)
 

@@ -49,19 +49,19 @@ class IntoTheWoods:
             self.aState(temp_stack.pop())
 
                     
-    def count(self, inputs):
-        for inp in inputs:
-            act = inp.split()
-            act_state = act[0]
-            if act_state == 'A':
-                self.aState(int(act[1]))
-            elif act_state == 'S':
-                self.sState()
-            else:
-                print(self.bState())
+    def count(self, inp):
+        act = inp.split()
+        act_state = act[0]
+        if act_state == 'A':
+            self.aState(int(act[1]))
+        elif act_state == 'S':
+            self.sState()
+        else:
+            print(self.bState())
                 
 
 wood = IntoTheWoods()
 inputs = input('Enter Input : ').split(',')
-wood.count(inputs)
+for inp in inputs:
+    wood.count(inp)
 
