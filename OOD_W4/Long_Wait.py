@@ -88,9 +88,9 @@ class LongWait:
         while not self.row_1.isEmpty():
             # Auto Enqueue To Cashier 2 If Cashier 1 Is Full
             self.cashier_1.enqueue(self.row_1.dequeue())
-            print(self.cashier_1.time, self.row_1.queue, self.cashier_1.queue, self.cashier_2.queue)
             self.cashier_1.update_time()
             self.cashier_2.update_time()
+            print(self.cashier_1.time, self.row_1.queue, self.cashier_1.queue, self.cashier_2.queue)
             self.cashier_1.complete_charge()
             self.cashier_2.complete_charge()
                 
