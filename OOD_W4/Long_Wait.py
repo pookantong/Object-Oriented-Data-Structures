@@ -16,13 +16,13 @@ class Queue:
         return len(self.__items)
     
     @property
-    def queue(self):
+    def items(self):
         return self.__items
 
 # Queue That Link To Next Queue
 class LinkQueueForLongWait:
     def __init__(self, charge_time, max_size) -> None:
-        self.__items = []
+        self.__queue = Queue()
         self.__charge_time = charge_time
         self.__max_size = max_size
         self.__time = 0
@@ -32,18 +32,18 @@ class LinkQueueForLongWait:
     # If Queue Is Full Enqueue To Next Queue   
     def enqueue(self, item):
         if not self.full():
-            self.__items.append(item)
+            self.__queue.enqueue(item)
         else:
             self.next.enqueue(item)
 
     def dequeue(self):
-        return self.__items.pop(0) if not self.isEmpty() else -1
+        return self.__queue.dequeue() if not self.isEmpty() else -1
 
     def isEmpty(self):
-        return len(self.__items) == 0
+        return self.size() == 0
 
     def size(self):
-        return len(self.__items)
+        return self.__queue.size()
     
     def full(self):
         return self.size() == self.__max_size if self.__max_size != None else None
@@ -63,7 +63,7 @@ class LinkQueueForLongWait:
     
     @property
     def queue(self):
-        return self.__items
+        return self.__queue.items
     
     @property
     def max_size(self):
@@ -90,7 +90,7 @@ class LongWait:
             self.cashier_1.enqueue(self.row_1.dequeue())
             self.cashier_1.update_time()
             self.cashier_2.update_time()
-            print(self.cashier_1.time, self.row_1.queue, self.cashier_1.queue, self.cashier_2.queue)
+            print(self.cashier_1.time, self.row_1.items, self.cashier_1.queue, self.cashier_2.queue)
             self.cashier_1.complete_charge()
             self.cashier_2.complete_charge()
                 
