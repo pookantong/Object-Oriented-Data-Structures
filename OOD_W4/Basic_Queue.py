@@ -1,22 +1,22 @@
 class Queue:
     def __init__(self) -> None:
-        self.__queue = []
+        self.__items = []
         
     def enqueue(self, item):
-        self.__queue.append(item)
+        self.__items.append(item)
 
     def dequeue(self):
-        return self.__queue.pop(0) if not self.isEmpty() else -1
+        return self.__items.pop(0) if not self.isEmpty() else -1
 
     def isEmpty(self):
-        return len(self.__queue) == 0
+        return len(self.__items) == 0
 
     def size(self):
-        return len(self.__queue)
+        return len(self.__items)
     
     @property
-    def queue(self):
-        return self.__queue
+    def items(self):
+        return self.__items
 
 inputs = input("Enter Input : ").split(',')
 queue = Queue()
@@ -33,4 +33,4 @@ for inp in inputs:
 if queue.isEmpty():
     print('Empty')
 else:
-    print(f'Number in Queue is :  {queue.queue}')
+    print(f'Number in Queue is :  {queue.items}')

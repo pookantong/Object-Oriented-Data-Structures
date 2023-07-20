@@ -1,49 +1,49 @@
 # Normal Queue
 class Queue:
     def __init__(self) -> None:
-        self.__queue = []
+        self.__items = []
         
     def enqueue(self, item):
-        self.__queue.append(item)
+        self.__items.append(item)
 
     def dequeue(self):
-        return self.__queue.pop(0) if not self.isEmpty() else -1
+        return self.__items.pop(0) if not self.isEmpty() else -1
 
     def isEmpty(self):
-        return len(self.__queue) == 0
+        return len(self.__items) == 0
 
     def size(self):
-        return len(self.__queue)
+        return len(self.__items)
     
     @property
     def queue(self):
-        return self.__queue
+        return self.__items
 
 # Queue That Link To Next Queue
 class LinkQueueForLongWait:
     def __init__(self, charge_time, max_size) -> None:
-        self.__queue = []
+        self.__items = []
         self.__charge_time = charge_time
         self.__max_size = max_size
         self.__time = 0
         # For Init Next Queue
-        self.next = None
+        self.next: Queue = None
        
     # If Queue Is Full Enqueue To Next Queue   
     def enqueue(self, item):
         if not self.full():
-            self.__queue.append(item)
+            self.__items.append(item)
         else:
             self.next.enqueue(item)
 
     def dequeue(self):
-        return self.__queue.pop(0) if not self.isEmpty() else -1
+        return self.__items.pop(0) if not self.isEmpty() else -1
 
     def isEmpty(self):
-        return len(self.__queue) == 0
+        return len(self.__items) == 0
 
     def size(self):
-        return len(self.__queue)
+        return len(self.__items)
     
     def full(self):
         return self.size() == self.__max_size if self.__max_size != None else None
@@ -63,7 +63,7 @@ class LinkQueueForLongWait:
     
     @property
     def queue(self):
-        return self.__queue
+        return self.__items
     
     @property
     def max_size(self):

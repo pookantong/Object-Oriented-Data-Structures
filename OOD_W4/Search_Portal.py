@@ -1,22 +1,22 @@
 class Queue:
     def __init__(self) -> None:
-        self.__queue = []
+        self.__items = []
         
     def enqueue(self, item):
-        self.__queue.append(item)
+        self.__items.append(item)
 
     def dequeue(self):
-        return self.__queue.pop(0) if not self.isEmpty() else None
+        return self.__items.pop(0) if not self.isEmpty() else None
 
     def isEmpty(self):
-        return len(self.__queue) == 0
+        return len(self.__items) == 0
 
     def size(self):
-        return len(self.__queue)
+        return len(self.__items)
     
     @property
     def queue(self):
-        return self.__queue
+        return self.__items
 
 class SearchPortal:
     def __init__(self) -> None:
