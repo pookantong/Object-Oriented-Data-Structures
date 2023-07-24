@@ -28,15 +28,9 @@ plates = input('Enter Input : ').split(',')
 plate_stack = Stack()
 for plate in plates:
     cur_plate = Plate(*[int(x) for x in plate.split()])
-    if not plate_stack.isEmpty() and cur_plate.weight > plate_stack.peek().weight:
-        while not plate_stack.isEmpty():
-            if cur_plate.weight > plate_stack.peek().weight:
-                print(plate_stack.pop().freq)
-            else:
-                break
-        plate_stack.push(cur_plate)
-    else:
-        plate_stack.push(cur_plate)
+    while not plate_stack.isEmpty() and cur_plate.weight > plate_stack.peek().weight:
+        print(plate_stack.pop().freq)
+    plate_stack.push(cur_plate)
         
     
     
