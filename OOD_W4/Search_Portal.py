@@ -22,6 +22,12 @@ class SearchPortal:
     def __init__(self) -> None:
         self.queue = Queue()
         self.directions = [(0, -1), (1, 0), (0, 1), (-1, 0)]
+        
+    def valid_room(self, width, height, room):
+        for row in room:
+            if len(row) != width:
+                return False
+        return len(room) == height
     
     # Find Position F    
     def find_start(self, room):
@@ -40,28 +46,24 @@ class SearchPortal:
                 self.queue.enqueue((new_x, new_y))
                 room[new_y][new_x] = 'X'
                 
-    def search(self, room):
+    def search(self, width, height, room):
+        if not self.valid_room(width, height, room):
+            print('Invalid map input.')
+            return
         self.queue.enqueue(self.find_start(room))
         if None in self.queue.queue:
-            return 'Invalid map input.'
+            print('Invalid map input.')
+            return
         # Main Loop
         while not self.queue.isEmpty():
             print(f'Queue: {self.queue.queue}')
             if self.find_the_next_way(room):
-                return 'Found the exit portal.'
-        return 'Cannot reach the exit portal.'      
+                print('Found the exit portal.')
+                return
+        return print('Cannot reach the exit portal.')      
 
-
-def check_valid_room(width, height, room):
-    for row in room:
-        if len(row) != width:
-            return False
-    return len(room) == height
 
 width, height, room = input('Enter width, height, and room: ').split()
 search_portal = SearchPortal()
 room = [list(string) for string in room.split(',')]
-if check_valid_room(int(width), int(height), room):
-    print(search_portal.search(room))
-else:
-    print('Invalid map input.')
+search_portal.search(int(width), int(height), room)
