@@ -27,6 +27,8 @@ class SearchPortal:
         for row in room:
             if len(row) != width:
                 return False
+        if None in self.queue.queue:
+            return False
         return len(room) == height
     
     # Find Position F    
@@ -47,11 +49,8 @@ class SearchPortal:
                 room[new_y][new_x] = 'X'
                 
     def search(self, width, height, room):
-        if not self.valid_room(width, height, room):
-            print('Invalid map input.')
-            return
         self.queue.enqueue(self.find_start(room))
-        if None in self.queue.queue:
+        if not self.valid_room(width, height, room):
             print('Invalid map input.')
             return
         # Main Loop
