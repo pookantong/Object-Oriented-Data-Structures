@@ -42,9 +42,9 @@ class SearchPortal:
         x, y = self.queue.dequeue()
         for dx, dy in self.directions:
             new_x, new_y = x + dx, y + dy
-            if 0 <= new_y < len(room) and 0 <= new_x < len(room[0]) and room[new_y][new_x] == 'O':
-                return True
-            elif 0 <= new_y < len(room) and 0 <= new_x < len(room[0]) and room[new_y][new_x] == '_':
+            if 0 <= new_y < len(room) and 0 <= new_x < len(room[0]) and room[new_y][new_x] in 'O_':
+                if room[new_y][new_x] == 'O':
+                    return True
                 self.queue.enqueue((new_x, new_y))
                 room[new_y][new_x] = 'X'
                 
