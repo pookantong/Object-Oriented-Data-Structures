@@ -11,32 +11,32 @@ class LinkedList:
         
     def __str__(self) -> str:
         res = ''
-        temp = self.head
-        while temp:
-            if temp.next:
-                res += str(temp.val) + ' <- '
+        cur = self.head
+        while cur:
+            if cur.next:
+                res += str(cur.val) + ' <- '
             else:
-                res += str(temp.val)
-            temp = temp.next
+                res += str(cur.val)
+            cur = cur.next
         return res
         
     def append(self, val):
         new_node = Node(val)
         if self.head:
-            temp = self.head
-            while temp.next:
-                temp = temp.next
-            temp.next = new_node
+            cur = self.head
+            while cur.next:
+                cur = cur.next
+            cur.next = new_node
         else:
             self.head = new_node
             
             
 def locomotive_first(linked_list: LinkedList):
-    temp = linked_list.head
-    while temp.val != '0':
-        linked_list.head = temp.next
-        linked_list.append(temp.val)
-        temp = temp.next  
+    cur = linked_list.head
+    while cur.val != '0':
+        linked_list.head = cur.next
+        linked_list.append(cur.val)
+        cur = cur.next  
         
 
 print(' *** Locomotive ***')

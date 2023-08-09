@@ -7,37 +7,34 @@ class Node:
 
 class DoublyLinkedList:
     def __init__(self) -> None:
-        self.dummy = Node()
-        self.dummy.next = self.dummy
-        self.dummy.prev = self.dummy
-        self.head = self.dummy
-        self.tail = self.dummy
+        self.head = Node()
+        self.tail = Node()
+        self.head.next = self.tail
+        self.tail.prev = self.head
         
         
     def __str__(self) -> str:
         res = ''
-        temp = self.head
-        while temp.next.val:
-            res += f'{temp.val} '
-            temp = temp.next
-        res += str(temp.val)
+        cur = self.head.next
+        while cur != self.tail:
+            res += f'{cur.val} '
+            cur = cur.next
         return res
         
     def __add__(self, linked_list_2):
-        temp_2 = linked_list_2.tail
-        while temp_2.val:
-            temp_2 = temp_2.prev
-            self.append(temp_2.next.val)
-        return self  
+        cur_2 = linked_list_2.tail.prev
+        while cur_2 != linked_list_2.head:
+            self.append(cur_2.val)
+            cur_2 = cur_2.prev
+        return self
         
     def append(self, val):
         new_node = Node(val)
-        new_node.prev = self.dummy.prev
-        new_node.next = self.dummy
-        self.dummy.prev.next = new_node
-        self.dummy.prev = new_node
-        self.head = self.dummy.next
-        self.tail = self.dummy.prev
+        before_tail = self.tail.prev
+        new_node.prev = before_tail
+        new_node.next = self.tail
+        before_tail.next = new_node
+        self.tail.prev = new_node
 
 
 def add_list_val_to_ll(linked_list, list_val):
