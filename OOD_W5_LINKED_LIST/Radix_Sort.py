@@ -40,13 +40,8 @@ class DoublyLinkedList:
 
     def pop_left(self):
         res = self.head.next
-        if not res:
+        if res == self.tail:
             return None
-        elif self.head == self.tail:
-            self.head = Node()
-            self.tail = Node()
-            self.size -= 1
-            return res
         else:
             self.head.next.next.prev = self.head
             self.head.next = self.head.next.next
@@ -64,13 +59,8 @@ class DoublyLinkedList:
 
     def pop(self):
         res = self.tail.prev
-        if not res:
+        if res == self.head:
             return None
-        elif self.head == self.tail:
-            self.head = Node()
-            self.tail = Node()
-            self.size -= 1
-            return res
         else:
             self.tail.prev.prev.next = self.tail
             self.tail.prev = self.tail.prev.prev
