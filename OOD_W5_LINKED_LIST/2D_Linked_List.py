@@ -16,7 +16,7 @@ class Link:
         self.head = Node()
 
     def next_Node(self,data):
-        if self.search(data.data) and self.search(data.data).data == data.data:
+        if self.search(data.data):
             return
         cur_node = self.head
         while cur_node.next:
