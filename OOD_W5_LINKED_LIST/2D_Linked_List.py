@@ -25,15 +25,17 @@ class Link:
     
     def search(self,data):
         cur_node = self.head
-        while cur_node and cur_node.data != data:
-            cur_node = cur_node.next
+        if cur_node:
+            while cur_node.data != data:
+                cur_node = cur_node.next
         return cur_node
     
     def next_secondary_Node(self,n,data):
         cur_node = self.search(n)
-        while cur_node.down:
-            cur_node = cur_node.down
-        cur_node.down = data
+        if cur_node != self.head:
+            while cur_node.down:
+                cur_node = cur_node.down
+            cur_node.down = data
     
     def show_all(self):
         cur_node = self.head.next
