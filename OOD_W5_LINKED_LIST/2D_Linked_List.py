@@ -25,9 +25,8 @@ class Link:
     
     def search(self,data):
         cur_node = self.head
-        if cur_node:
-            while cur_node.data != data:
-                cur_node = cur_node.next
+        while cur_node and cur_node.data != data:
+            cur_node = cur_node.next
         return cur_node
     
     def next_secondary_Node(self,n,data):
