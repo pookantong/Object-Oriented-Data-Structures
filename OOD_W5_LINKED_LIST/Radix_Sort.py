@@ -74,11 +74,9 @@ class DoublyLinkedList:
 def get_max_digit(nums):
     max_num = float('-inf')
     for num in nums:
-        max_num = max(max_num, num)
-    min_num = float('inf')
-    for num in nums:
-        min_num = min(min_num, num)
-    return max(len(str(max_num)), len(str(min_num)[:1]))
+        max_num = max(max_num, abs(num))
+    
+    return len(str(max_num))
 
 def get_digit(num, digit):
     num = abs(num)
