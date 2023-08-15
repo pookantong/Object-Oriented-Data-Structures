@@ -2,13 +2,13 @@ class Node:
     def __init__(self,data=None):
        self.data = data
        self.next = None
-       self.down = None
+       self.s_next = None
 
 
 class SNode:
     def __init__(self, data=None):
         self.data = data
-        self.down = None
+        self.s_next = None
 
 
 class Link:
@@ -32,18 +32,18 @@ class Link:
     def next_secondary_Node(self,n,data):
         cur_node = self.search(n)
         if cur_node != self.head:
-            while cur_node.down:
-                cur_node = cur_node.down
-            cur_node.down = data
+            while cur_node.s_next:
+                cur_node = cur_node.s_next
+            cur_node.s_next = data
     
     def show_all(self):
         cur_node = self.head.next
         while cur_node:
             print(f'{cur_node.data} : ', end='')
-            cur_down_node = cur_node.down
-            while cur_down_node:
-                print(f'{cur_down_node.data},', end='')
-                cur_down_node = cur_down_node.down
+            cur_s_next_node = cur_node.s_next
+            while cur_s_next_node:
+                print(f'{cur_s_next_node.data},', end='')
+                cur_s_next_node = cur_s_next_node.s_next
             print()
             cur_node = cur_node.next
 
