@@ -19,6 +19,8 @@ def build_tree(encode_node):
         new_root.height = max(least_node1.height, least_node2.height) + 1
         encode_node.append(new_root)
         encode_node = sorted(encode_node, key=lambda node: (node.freq, -node.height))
+        printTree(new_root)
+        print('------------------------------------------------------')
     return encode_node.pop()
     
     
@@ -47,11 +49,12 @@ for char in inp:
         encode_data[char] += 1
     else:
         encode_data[char] = 1
-encode_data = dict(sorted(encode_data.items(), key=lambda item: item[1]))       
+print(encode_data) 
 encode_node = []
-for key, item in encode_data.items():
-    encode_node.append(Node(key, item))
+for key, freq in encode_data.items():
+    encode_node.append(Node(key, freq))
 encode_node = sorted(encode_node, key=lambda node: (node.freq, node.key))
+print(*encode_node)
 root = build_tree(encode_node)
 huffman_code = huffman(root)
 print(huffman_code)
